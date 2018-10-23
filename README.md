@@ -1,5 +1,8 @@
 # HaskellRules
 
-[From]: https://github.com/jrp2014/HaskellRules.git
+## by Martin Erwig
+
+
+From https://web.engr.oregonstate.edu/~erwig/HaskellRules/
 
 Updated for Haskell 8.6.1 and Hlinted
