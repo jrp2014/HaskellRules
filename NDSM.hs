@@ -4,6 +4,7 @@ import Control.Applicative
 import Control.Monad
 import Control.Monad.Fail
 
+-- TODO:: NDSM s a is just StateT s [] a  (strict)
 newtype NDSM s a = NDSM
   { unNDSM :: s -> [(s, a)]
   }
@@ -12,11 +13,11 @@ instance Functor (NDSM s) where
   fmap = (<*>) . return
 
 instance Applicative (NDSM s) where
-  pure = return
+  pure x = NDSM (\s -> [(s, x)])
   (<*>) = ap
 
 instance Monad (NDSM s) where
-  return x = NDSM (\s -> [(s, x)])
+  return = pure
   (NDSM f) >>= c =
     NDSM
       (\s ->
