@@ -4,7 +4,8 @@ import Control.Applicative
 import Control.Monad
 import Control.Monad.Fail
 
--- TODO:: NDSM s a is just StateT s [] a  (strict)
+-- TODO:: NDSM s a is just S variant of StateT s [] a (strict) but with with an 
+-- unwrapper of s->(s, a)] instead of s->(a, s)]
 newtype NDSM s a = NDSM
   { unNDSM :: s -> [(s, a)]
   }
